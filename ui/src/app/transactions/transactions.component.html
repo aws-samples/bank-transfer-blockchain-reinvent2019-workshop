@@ -1,0 +1,14 @@
+<h3>Recent Transactions</h3>
+<table class="transactions table table-striped table-bordered table-condensed">
+    <tr>
+        <th>Amount</th>
+        <th>Currency</th>
+        <th>Timestamp</th>
+    </tr>
+
+    <tr *ngFor="let transaction of transactions">
+        <td>{{transaction.Value.balance}} </td>
+        <td>{{transaction.Value.currency}}</td>
+        <td>{{transaction.Timestamp}}</td>
+    </tr>
+</table>

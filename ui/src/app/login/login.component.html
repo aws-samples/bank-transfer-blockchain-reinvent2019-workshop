@@ -1,0 +1,22 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<nav class="navbar navbar-expand-sm justify-content-center">
+    <a href=# class="navbar-brand">
+        <h1 class="bankName">{{bank_name}}</h1>
+    </a>
+
+</nav>
+
+<div class="card mt-5" style="margin:auto;width: 600px;">
+    <div class="card-body">
+        <h5 class="card-title">Login</h5>
+        <div class="form-group">
+            <input type="text" class="form-control" id="accNum" placeholder="Account Number" [(ngModel)]="accNum">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="submit()">Login</button>
+    </div>
+    <div class="message">{{message}}</div>
+
+</div>

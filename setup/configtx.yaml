@@ -1,0 +1,82 @@
+################################################################################
+#
+#   Section: Organizations
+#
+#   - This section defines the different organizational identities which will
+#   be referenced later in the configuration.
+#
+################################################################################
+Organizations:
+    - &Org1
+            # member id defines the organization
+        Name: <Member1ID>
+            # ID to load the MSP definition as
+        ID: <Member1ID>
+            #msp dir of org1 in the docker container
+        MSPDir: /opt/home/admin-msp
+            # AnchorPeers defines the location of peers which can be used
+            # for cross org gossip communication.  Note, this value is only
+            # encoded in the genesis block in the Application section context
+        AnchorPeers:
+            - Host:
+              Port:
+    - &Org2
+        Name: <Member2ID>
+        ID: <Member2ID>
+        MSPDir: /opt/home/<org2-msp>
+        AnchorPeers:
+            - Host:
+              Port:
+    - &Org3
+        Name: <Member3ID>
+        ID: <Member3ID>
+        MSPDir: /opt/home/<org3-msp>
+        AnchorPeers:
+            - Host:
+              Port:
+    - &Org4
+        Name: <Member4ID>
+        ID: <Member4ID>
+        MSPDir: /opt/home/<org4-msp>
+        AnchorPeers:
+            - Host:
+              Port:        
+    - &Org5
+        Name: <Member5ID>
+        ID: <Member5ID>
+        MSPDir: /opt/home/<org5-msp>
+        AnchorPeers:
+            - Host:
+              Port: 
+################################################################################
+#
+#   SECTION: Application
+#
+#   - This section defines the values to encode into a config transaction or
+#   genesis block for application related parameters
+#
+################################################################################
+Application: &ApplicationDefaults
+        # Organizations is the list of orgs which are defined as participants on
+        # the application side of the network
+     Organizations:
+
+################################################################################
+#
+#   Profile
+#
+#   - Different configuration profiles may be encoded here to be specified
+#   as parameters to the configtxgen tool
+#
+################################################################################
+Profiles:
+   FiveOrgChannel:
+        Consortium: AWSSystemConsortium
+        Application:
+            <<: *ApplicationDefaults
+            Organizations:
+                - *Org1
+                - *Org2
+                - *Org3
+                - *Org4
+                - *Org5

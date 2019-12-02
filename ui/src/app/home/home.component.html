@@ -1,0 +1,28 @@
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<nav class="navbar navbar-expand-sm justify-content-center">
+    <a href=# class="navbar-brand">
+        <h1 class="bankName">{{bank_name}}</h1>
+    </a>
+
+</nav>
+
+
+
+<div class="container">
+
+    <app-account accNum={{accNum}}></app-account>
+
+    <button class="showTransfer btn btn-primary" (click)="showTransfer()">Make a Transfer</button>
+
+    <div *ngIf="transferVisible==true">
+        <app-transfer fromAccNum={{accNum}}></app-transfer>
+    </div>
+
+
+    <app-transactions accNum={{accNum}}></app-transactions>
+
+
+</div>

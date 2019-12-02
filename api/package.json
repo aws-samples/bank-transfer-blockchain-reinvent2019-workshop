@@ -1,0 +1,25 @@
+{
+  "name": "api",
+  "version": "1.0.0",
+  "description": "An API for the Blockchain Interbank Transfer Workshop",
+  "main": "app.js",
+  "dependencies": {
+    "aws-sdk": "^2.580.0",
+    "body-parse": "^0.1.0",
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "fabric-ca-client": "^1.4.4",
+    "fabric-client": "^1.4.4",
+    "log4js": "^6.1.0",
+    "uuid": "^3.3.3",
+    "ws": "^7.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "",
+  "license": "MIT"
+}

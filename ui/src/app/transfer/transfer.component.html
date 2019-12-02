@@ -1,0 +1,29 @@
+<div *ngIf="show==true">
+
+  <div class="card" style="max-width: 25rem;">
+    <div class="card-header">Make a Payment</div>
+    <div class="card-body">
+
+      <div class="form-group">
+        <label for="description">Payee Account</label>
+        <input type="text" class="form-control" id="toAccNum" placeholder="" [(ngModel)]='toAccNum'>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Payee Bank ID</label>
+        <input type="text" class="form-control" id="toBankID" placeholder="" [(ngModel)]='toBankID'>
+      </div>
+
+      <div class="form-group">
+        <label for="Amount">Amount</label>
+        <input type="number" step="0.01" min=0 class="form-control" id="amount" placeholder="0.00" [(ngModel)]="amount">
+      </div>
+
+
+      <button type="submit" class="btn btn-primary" (click)="submit()">Make Transfer</button>
+
+    </div>
+  </div>
+</div>
+
+<div class={{status}}>{{message}}</div>

@@ -1,0 +1,16 @@
+{
+   "host": "localhost",
+   "port": "3000",
+   "channelName": "bar",
+   "chaincodeName": "globalbank",
+   "eventWaitTime": "30000",
+   "clientConfig": "../tmp/connection-profile/org1/client-org.yaml",
+   "org": "org1",
+   "peers": [
+      "peer1"
+   ],
+   "admins": [{
+      "username": "admin",
+      "secret": "Admin123"
+   }]
+}

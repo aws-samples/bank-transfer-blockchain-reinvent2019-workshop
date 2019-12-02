@@ -1,0 +1,30 @@
+Description: "A template that creates a Cloud9 Environment"
+
+Resources:
+  Cloud9Env:
+    Type: "AWS::Cloud9::EnvironmentEC2"
+    Properties:
+      Name: AthenaWorkshopEnvironment
+      Description: "Cloud9 environment for Athena Federation Workshop"
+      InstanceType: "t3.large"
+      AutomaticStopTimeMinutes: 1440
+
+  AdminPassword:
+    Type: "AWS::SecretsManager::Secret"
+    Properties:
+      Name: AmazonBlockchainWorkshopAdminPassword
+      Description: "The Admin Password for our Blockchain Network"
+      SecretString: Admin123
+      #Generate a random password.
+      #GenerateSecretString:
+      #  ExcludeLowercase: false
+      #  ExcludeNumbers: false
+      #  ExcludePunctuation: True
+      #  ExcludeUppercase: false
+      #  IncludeSpace: false
+      #  PasswordLength: 10
+
+Outputs:
+  Cloud9EnvArn:
+    Description: "The Cloud9 Environment ARN"
+    Value: !Ref Cloud9Env
