@@ -15,7 +15,7 @@
 
 # REPODIR points to this repo
 # LOCALCA points to the location of the TLS cert
-REPODIR=/home/ec2-user/environment/BanktransferBlockchainWorkshop
+REPODIR=/home/ec2-user/environment/bank-transfer-blockchain-reinvent2019-workshop
 LOCALCA=/home/ec2-user/managedblockchain-tls-chain.pem 
 ORG=Org1
 

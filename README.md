@@ -482,6 +482,14 @@ The follow diagram demonstrates the interaction of chaincode to provide an inter
 ![Interbank Transfer](./images/interbank-arch.png)
 
 
+###  Set INTENRBANKCHAINCODENAME.
+
+```bash
+export INTENRBANKCHAINCODENAME=$BANKCHAINCODENAME-interbank
+```
+
+Add this export to either your .bashrc or ~/fabric_exports file in order to avoid having to reset it if you open a new terminal session.
+
 
 ##  (Advanced, Optional) - Implement Interbank Transfer
 
@@ -547,13 +555,6 @@ cli peer chaincode upgrade -o $ORDERER -C $CHANNEL -n $BANKCHAINCODENAME -v v1 -
 
 ### Deploy the InterbankChaincode
 
-First set INTENRBANKCHAINCODENAME.
-
-```bash
-export INTENRBANKCHAINCODENAME=$BANKCHAINCODENAME-interbank
-```
-
-Add this export to either your .bashrc or ~/fabric_exports file in order to avoid having to reset it if you open a new terminal session.
 
 ### Install the chaincode on the peer
 
