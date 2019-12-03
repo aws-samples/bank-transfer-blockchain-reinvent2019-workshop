@@ -54,14 +54,14 @@ We will use AWS Cloud9 to provide a Linux terminal which has the AWS CLI already
 
 ```bash
 cd ~/environment/
-git clone https://github.com/aws-samples/BanktransferBlockchainWorkshop.git
+git clone https://github.com/aws-samples/bank-transfer-blockchain-reinvent2019-workshop.git
 ```
 
 We have included two scripts within the Git Repo that will be very helpful in running in this workshop and automates many manual steps. The first script downloads and setups the environment with all the necessary dependencies and tools needed for this workshop. Run the following:
 
 ```bash
 cd ~
-~/environment/BanktransferBlockchainWorkshop/setup/setup_environment.sh
+~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/setup_environment.sh
 ```
 
 This will take a few minutes.  When it's complete you should see the following:
@@ -69,7 +69,7 @@ This will take a few minutes.  When it's complete you should see the following:
 ```
 Completed successfully. Please run:
 1) source ~/.bash_profile
-2) '~/environment/BanktransferBlockchainWorkshop/setup/setup_fabric_environment.py' to finish setting up this environment.
+2) '~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/setup_fabric_environment.py' to finish setting up this environment.
 ``` 
 
 Now, you will need to import your bash profile to get updated paths, and variables. 
@@ -82,7 +82,7 @@ Now, you should run a second script that will setup the environment for your Blo
 
 ```bash
 cd ~/environment/
-./BanktransferBlockchainWorkshop/setup/setup_fabric_environment.py 
+./bank-transfer-blockchain-reinvent2019-workshop/setup/setup_fabric_environment.py 
 ``` 
 
 You will be asked a series of questions. Select the network, member and node that you have available to you. The script will then go and setup a few things:
@@ -95,6 +95,13 @@ You will be asked a series of questions. Select the network, member and node tha
 ```bash
 source ~/fabric_exports
 ```
+
+Through this initial setup, this is what we have deployed: 
+
+![Overview](./images/overview.png)
+
+Now that we have a Amazon Managed Blockchain Network and a Cloud9 notebook configured to interact with Fabric, we can start to deploy
+chaincode.
 
 # Part 2 - Deploy Chaincode on a Private Channel 
 
@@ -130,7 +137,7 @@ export CHANNEL=<UNIQUE CHANNEL NAME>
 Update the configtx channel configuration. This file configures how a channel is created. The Name and ID fields should be updated with the member ID from Managed Blockchain.
 
 ```bash
-cp ~/environment/BanktransferBlockchainWorkshop/setup/private-configtx.yaml ~/configtx.yaml
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/private-configtx.yaml ~/configtx.yaml
 sed -i "s|__MEMBERID__|$MEMBERID|g" ~/configtx.yaml
 ```
 
@@ -206,7 +213,7 @@ more about the design of the chaincode used in this workshop please refer to the
 To get started, copy the chaincode from the chaincode/src folder in the repository, to the GOPATH:
 
 ```bash
-cp -r ~/environment/BanktransferBlockchainWorkshop/chaincode/* ~/go/
+cp -r ~/environment/bank-transfer-blockchain-reinvent2019-workshop/chaincode/* ~/go/
 ```
 
 ### Add a Symlink to GOPATH
@@ -497,7 +504,7 @@ Note that it is the chaincode in ~/go/src/bank that is used when we deploy Chain
 If you prefer to use the provided solution and skip implementing your own transfer function, run:
 
 ```
-cp ~/environment/BanktransferBlockchainWorkshop/solution/transfer.go ~/go/src/bank/transfer.go
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/solution/transfer.go ~/go/src/bank/transfer.go
 ```
 
 This will overwrite the existing chaincode with a complete solution. 
@@ -509,7 +516,7 @@ Regardless of whether you wrote the transfer method or if you used the provided 
 If you skipped above and have not yet copied the pre-made solution, please do so now by running:
 
 ```bash
-cp ~/environment/BanktransferBlockchainWorkshop/solution/transfer.go ~/go/src/bank/transfer.go
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/solution/transfer.go ~/go/src/bank/transfer.go
 ```
 
 To do this, install a new version. Note the version is now v1:
@@ -694,29 +701,29 @@ that will interact with our chaincode.
 
 ### Install Dependencies
 ```bash
-cd ~/environment/BanktransferBlockchainWorkshop/api
+cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api
 npm install
 ```
 
 ## Generate Connection Profile
 ```bash
-chmod +x ~/environment/BanktransferBlockchainWorkshop/api/connection-profile/gen-profile.sh
+chmod +x ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/connection-profile/gen-profile.sh
 ./connection-profile/gen-profile.sh
 ```
 
 Confirm that the connection profile was generated correctly:
 
 ```
-cat ~/environment/BanktransferBlockchainWorkshop/tmp/connection-profile/bank-connection-profile.yaml
+cat ~/environment/bank-transfer-blockchain-reinvent2019-workshop/tmp/connection-profile/bank-connection-profile.yaml
 ```
 
 ### Edit the Config
 
-Using Cloud9's editor, edit the BanktransferBlockchainWorkshop/api/config.json file and specify the name of your channel (that's either ourchannel or $CHANNEL) and the name of your bank chaincode (which if you don't remember what it is, run 'echo $BANKCHAINCODENAME').
+Using Cloud9's editor, edit the bank-transfer-blockchain-reinvent2019-workshop/api/config.json file and specify the name of your channel (that's either ourchannel or $CHANNEL) and the name of your bank chaincode (which if you don't remember what it is, run 'echo $BANKCHAINCODENAME').
 
 ## Start the REST API
 ```bash
-cd ~/environment/BanktransferBlockchainWorkshop/api/
+cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/
 ./start.sh
 ```
 
@@ -757,7 +764,7 @@ Next, we're going to deploy a simple Angular UI to invoke the web API. In a real
 Using your second terminal (first terminal is running the webservices), change to the ui directory:
 
 ```bash
-cd ~/environment/BanktransferBlockchainWorkshop/ui
+cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/ui
 ```
 
 Using the Cloud9 editor, edit ui/src/environments/environment.ts and change the value of 'bank_name' to the name that you
@@ -783,7 +790,7 @@ ng serve --port 8080 --disableHostCheck true --host 0.0.0.0
 If you see the following error, re-run "npm install": 
 
 ```
-An unhandled exception occurred: Could not find module "@angular-devkit/build-angular" from "/home/ec2-user/environment/BanktransferBlockchainWorkshop/ui"
+An unhandled exception occurred: Could not find module "@angular-devkit/build-angular" from "/home/ec2-user/environment/bank-transfer-blockchain-reinvent2019-workshop/ui"
 ```
 
 ### Open the Security Group To Allow 8080 and 8081 From Your IP to the Cloud9 Instance
@@ -833,25 +840,25 @@ aws kinesis create-stream --stream-name bank-transfer-events --shard-count 1  --
 
 ### Execute a script to listen to your events and send them Amazon Kinesis
 
-Events emitted by your chaincode can be consumed by external programs using the Fabric Client API. Within the events folder, the script listener.js located at ~/environment/BanktransferBlockchainWorkshop/events listens from events in our chaincode and then writes those events to the Kinesis Data Stream that we just created. Examine the contents of the script.
+Events emitted by your chaincode can be consumed by external programs using the Fabric Client API. Within the events folder, the script listener.js located at ~/environment/bank-transfer-blockchain-reinvent2019-workshop/events listens from events in our chaincode and then writes those events to the Kinesis Data Stream that we just created. Examine the contents of the script.
 
 Copy the config.json from the api folder to the events folder:
 
 ```bash
-cp ~/environment/BanktransferBlockchainWorkshop/api/config.json ~/environment/BanktransferBlockchainWorkshop/events/config.json
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/config.json ~/environment/bank-transfer-blockchain-reinvent2019-workshop/events/config.json
 ```
 
 Once again, download dependencies:
 
 ```bash 
-cd ~/environment/BanktransferBlockchainWorkshop/events
+cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/events
 npm install
 ```
 
 We will reuse the config.json file that we used for our webservice that contains information about how to connect to our Peer and Network.
 
 ```
-cp ~/environment/BanktransferBlockchainWorkshop/api/config.json ~/environment/BanktransferBlockchainWorkshop/events/config.json
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/config.json ~/environment/bank-transfer-blockchain-reinvent2019-workshop/events/config.json
 ```
 
 Execute the script with the following command:
@@ -1025,7 +1032,7 @@ All other members will need to accept the invitation. They can do this by:
 4. Wait till the member's infrastructure is complete.
 5. Go to the newly created member in the console, create a Peer Node.
 6. Wait till the peer node has been created.
-7. Go back to Cloud9, and re-run the script ~/environment/BanktransferBlockchainWorkshop/setup/setup_fabric_environment.py and selecting the new network, member and peer.  
+7. Go back to Cloud9, and re-run the script ~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/setup_fabric_environment.py and selecting the new network, member and peer.  
 8. After the script has been completed, do not forget to do a "source ~/fabric_exports"
 
 ### Copy Certificates - All other participants
@@ -1038,7 +1045,7 @@ Every participant must share their certificates with the participant nominated t
 We have created a few utilities that makes this process easier. When you ran the setup_fabric_environment.py, we copied your public certificates to S3. Before you run the following, make sure that everyone that is participating as completed the previous step to ensure that their certificates have been copied to S3. Then, You can retrieve all the certificates for all other members by running:
 
 ```bash
-~/environment/BanktransferBlockchainWorkshop/setup/copy_public_certificates.py
+~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/copy_public_certificates.py
 ```
 
 This script will download the certificates to your environment to your home directory. The following should be seen now:
@@ -1056,7 +1063,7 @@ This script will download the certificates to your environment to your home dire
 
 The configtx.yaml file contains details of the organizations participating in a Fabric network as well as channel configuration profiles that can be used when creating new channels. The channel creator originally created this file just before creating the channel. The channel creator now needs to add the members to this file.
 
-In Cloud9, on the left hand side, you can find our template by going to BanktransferBlockchainWorkshop/setup/configtx.yaml. Substitute the bracketed values for the ID of each member. If your group does not have 5 members, remove any organizations that are not needed from the 'Organizations' section as well as the 'Profiles' section.
+In Cloud9, on the left hand side, you can find our template by going to bank-transfer-blockchain-reinvent2019-workshop/setup/configtx.yaml. Substitute the bracketed values for the ID of each member. If your group does not have 5 members, remove any organizations that are not needed from the 'Organizations' section as well as the 'Profiles' section.
 
 Below is an example for only two participants:
 ```
@@ -1127,7 +1134,7 @@ Profiles:
 Copy the config file that was just modified:
 
 ```bash
-cp ~/environment/BanktransferBlockchainWorkshop/setup/configtx.yaml ~
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/setup/configtx.yaml ~
 ```
 
 ### Channel Creator (org1) Only: Create Genesis Block
@@ -1193,7 +1200,7 @@ Now that all peers are a member of the same channel, we can deploy a more realis
 All peers must be using the same version of the chaincode. Therefore, if you implemented your own transfer function it will cause issues trying to interoperate with other participants. Overwrite your transfer.go with the transfer.go provided in the solution folder: 
 
 ```
-cp ~/environment/BanktransferBlockchainWorkshop/solution/transfer.go ~/go/src/bank/transfer.go
+cp ~/environment/bank-transfer-blockchain-reinvent2019-workshop/solution/transfer.go ~/go/src/bank/transfer.go
 ```
 
 We are now working on a shared channel called, ourchannel. If you re-use any commands from earlier, update the $CHANNEL variable:
