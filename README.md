@@ -10,6 +10,10 @@ There are Five parts to this workshop. In each part we will deploy:
 * An analytics solution for our chaincode events using Amazon Kinesis Analytics, Amazon Athena, and Amazon Quicksight
 * Optionally: A shared Fabric channel across multiple workshop participants
 
+This diagram describes this architecture at a high level:
+
+![End to End Architecture](./images/endtoend.png)
+
 # Part 0 - Prerequisites and Environment Setup
 
 The following are prerequisites for this workshop:
