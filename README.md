@@ -886,6 +886,13 @@ Right now, all events go to Kinesis but no further. We’ll persist our events f
 3. Provide an S3 bucket in which to store your results. Remember so you can use it with Athena.
 
 
+### Execute Transactions
+
+You can invoke transfers via the command line, via the web app, or via the API. If you want to
+create a larger volume of tranfers events/invoke.sh is a simple script that will perform small
+transfers between two accounts. You can use this script to generate a large volume of transactions
+quickly. 
+
 ## Analyze events in S3 using Amazon Athena
 
 ### Create a new Athena database and table
