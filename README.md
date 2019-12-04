@@ -746,9 +746,9 @@ cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/
 
 In Cloud9, start a new terminal by clicking on the (+) button in the tabs and select "New Terminal". Run:
 
-'''bash
+```bash
 source ~/fabric_exports
-'''
+```
 
 The transfer API call takes the same parameters that we can pass into the chaincode via the Fabric CLI. Substitute in appropriate parameters that correspond to the BankIDs and accounts that you have created earlier.
 
