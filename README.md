@@ -415,7 +415,7 @@ docker exec -e "CORE_PEER_TLS_ENABLED=true" \
 -e "CORE_PEER_LOCALMSPID=$MSP" \
 -e "CORE_PEER_MSPCONFIGPATH=$MSP_PATH"  \
 -e "CORE_PEER_ADDRESS=$PEER" \
-cli peer chaincode invoke -o $ORDERER -C $CHANNEL -n $FOREXCHAINCODENAME    -c '{"Args":["createUpdateForexPair", "USD", "GBP", "0.8"]}' --cafile $CAFILE --tls
+cli peer chaincode invoke -o $ORDERER -C $CHANNEL -n $FOREXCHAINCODENAME -c '{"Args":["createUpdateForexPair", "USD", "GBP", "0.8"]}' --cafile $CAFILE --tls
 ```
 
 ### Query the Pair
