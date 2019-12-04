@@ -878,16 +878,16 @@ Execute a transfer, either via the Fabric CLI or using the Web UI. You will see 
 
 ### Deliver events to Amazon S3 using Amazon Kinesis Data Streams
 
-Right now, all events go to Kinesis but no further. We’ll persist our events for analysis with Athena later on. To do so, navigate to the Kinesis Data Streams console and choose the bank-transfer-events stream that you just created. 
+Right now, all events go to Kinesis but no further. We’ll persist our events for analysis with Athena later on. To do so, navigate to the [Kinesis Data Streams console](https://console.aws.amazon.com/kinesis/home?region=us-east-1#/streams/list).
 
-
-1. In the upper right-hand corner, choose Connect to Consumers, then select connect to delivery stream. This will enable us to forward all events to a Kinesis Data Firehose stream, which delivers them to an S3 bucket.
-2. Name the delivery stream choose Next, and don’t enable record transformation. 
-3. Provide an S3 bucket in which to store your results. Remember so you can use it with Athena.
-4. Create an IAM role for the delivery stream
-5. Create the delivery stream
-
-
+1. Select the `bank-transfer-events` stream that you just created. 
+2. Click `Connect Kinesis Consumers`.
+3. Click `Connect to delivery stream`.
+4. On the 'Name and Source' step, enter a delivery stream name, and click Next
+5. On the 'Process Records' step, keep the defaults, and click Next
+6. On the 'Choose a Destination' step, select S3 as the destination and choose an S3 bucket, and click Next
+7. On the 'Configure Settings' step, under Permissions, click Create New or Choose.  You can create a new role with the default settings.  Click Next.
+8. Click 'Create Delivery Stream'
 
 ### Execute Transactions
 
