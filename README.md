@@ -881,9 +881,12 @@ Execute a transfer, either via the Fabric CLI or using the Web UI. You will see 
 Right now, all events go to Kinesis but no further. We’ll persist our events for analysis with Athena later on. To do so, navigate to the Kinesis Data Streams console and choose the bank-transfer-events stream that you just created. 
 
 
-1. In the upper right-hand corner, choose Connect to Firehose. This forwards all events to a Kinesis Data Firehose stream, which delivers them to an S3 bucket.
-2. Name the delivery stream choose Next, and don’t enable record transformation.
+1. In the upper right-hand corner, choose Connect to Consumers, then select connect to delivery stream. This will enable us to forward all events to a Kinesis Data Firehose stream, which delivers them to an S3 bucket.
+2. Name the delivery stream choose Next, and don’t enable record transformation. 
 3. Provide an S3 bucket in which to store your results. Remember so you can use it with Athena.
+4. Create an IAM role for the delivery stream
+5. Create the delivery stream
+
 
 
 ### Execute Transactions
@@ -956,15 +959,25 @@ In this section, we're going to use Amazon Quicksight to visualize transfers bei
 ![Quicksight Dashboard](./images/quicksight.png)
 
 ### Set up Quicksight
-* Click Manage Data
-* Click New Dataset
-* Select Athena
-* Name the data source, e.g. "banktransfers"
-* Select the Athena database and table you created earlier
-* Select import the data into SPICE
-* Click Edit/Preview Data
-* On the amount column click "string", change this to Decimal.
-* Click Save and Visualize
+1. Click Manage Data
+2. Click New Dataset
+3. Select Athena
+4. Name the data source, e.g. "banktransfers"
+5. Select the Athena database and table you created earlier
+6. Select import the data into SPICE
+7. Click Edit/Preview Data
+8. On the amount column click "string", change this to Decimal.
+9. Click Save and Visualize
+
+If you run into any permissions errors accessing Athena. Perform the following steps:
+
+1. Click your profile name (top right). Choose Manage QuickSight, and then choose Security & permissions.
+2. Choose Add or remove.
+3. Locate Athena in the list. Clear the check box next to it, and then enable it. Then choose Connect both.
+4. Select the buckets you want to access from Amazon QuickSight.
+5. Choose Select to save your S3 buckets.
+
+
 
 ### Visualization 1: Total Amount Transferred
 * Select autograph
