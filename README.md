@@ -726,6 +726,16 @@ cat ~/environment/bank-transfer-blockchain-reinvent2019-workshop/tmp/connection-
 
 Using Cloud9's editor, edit the bank-transfer-blockchain-reinvent2019-workshop/api/config.json file and specify the name of your channel (that's either ourchannel or $CHANNEL) and the name of your bank chaincode (which if you don't remember what it is, run 'echo $BANKCHAINCODENAME').
 
+```bash
+echo $CHANNEL
+echo $BANKCHAINCODENAME
+```
+
+Update the config.json with the values above.
+```bash
+vi ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/config.json
+```
+
 ## Start the REST API
 ```bash
 cd ~/environment/bank-transfer-blockchain-reinvent2019-workshop/api/
