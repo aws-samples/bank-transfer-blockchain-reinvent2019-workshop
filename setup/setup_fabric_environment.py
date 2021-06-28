@@ -147,10 +147,12 @@ else:
         print (str(count) + ") " + member['Name'] + " (Id=" + member['Id'] + ")")
 
     print ("\nSelect the member that you want to setup this environment for: ")
+    tryAgain = True
     while tryAgain:
         try:
             choice = input()
             blockchainMember = blockchainMembers['Members'][int(choice) - 1]
+            tryAgain = False
         except KeyboardInterrupt:
             sys.exit()
         except Exception as e:
@@ -193,10 +195,12 @@ else:
         print (str(count) + ") " + peer['Id'])
 
     print ("\nSelect the member that you want to setup this environment for: ")
+    tryAgain = True
     while tryAgain:
         try:
             choice = input()
             peer = peer['Nodes'][int(choice) - 1]
+            tryAgain = False
         except KeyboardInterrupt:
             sys.exit()
         except Exception as e:
